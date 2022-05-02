@@ -1,5 +1,5 @@
-function begin(){
-let B;
+function update(board0, board1, board2, board3, board4, board5, board6, board7, B){
+/*
 const board0 =[WR,WH,WB,WK,WQ,WB,WH,WR];
 const board1= [WP,WP,WP,WP,WP,WP,WP,WP];
 const board2= [B, B, B, B ,B ,B ,B ,B];
@@ -7,7 +7,8 @@ const board3= [B, B, B, B ,B ,B ,B ,B];
 const board4= [B, B, B, B ,B ,B ,B ,B];
 const board5= [B, B, B, B ,B ,B ,B ,B];
 const board6= [BP,BP,BP,BP,BP,BP,BP,BP]
-const board7 =[BR,BH,BB,BK,BQ,BB,BH,BR];
+const board7 =[BR,BH,BB,BK,BQ,BB,BH,BR];*/
+
 for(let row=0; row<8;row++){
   for(let col=0; col<8; col++){
     if(row==0){
@@ -42,7 +43,7 @@ for(let row=0; row<8;row++){
       if(board7[col]!=B)
       {image(board7[col],col*50,50*row)}
     }
-    
+
   }
-}
+}   
 }
