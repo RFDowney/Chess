@@ -1,6 +1,6 @@
 
-let BK,BQ,BH,BR,BP,WK,WQ,WH,WR,WP,B;
-let board0, board1, board2, board3, board4, board5, board6, board7;
+let BK,BQ,BH,BR,BP,WK,WQ,WH,WR,WP,B,log,storedr,storedc;
+let board;
 function preload() {
   BK = loadImage("Pieces/BKing.png");
   BQ = loadImage("Pieces/BQueen.png");
@@ -19,15 +19,16 @@ function preload() {
 function setup() {
   createCanvas(410, 410);
 
-  board0 =[BR,BH,BB,BQ,BK,BB,BH,BR];
-  board1= [BP,BP,BP,BP,BP,BP,BP,BP];
-  board2= [B, B, B, B ,B ,B ,B ,B];
-  board3= [B, B, B, B ,B ,B ,B ,B];
-  board4= [B, B, B, B ,B ,B ,B ,B];
-  board5= [B, B, B, B ,B ,B ,B ,B];
-  board6= [WP,WP,WP,WP,WP,WP,WP,WP]
-  board7 =[WR,WH,WB,WQ,WK,WB,WH,WR];
+  board=[ [BR,BH,BB,BQ,BK,BB,BH,BR],
+          [BP,BP,BP,BP,BP,BP,BP,BP],
+          [B, B, B, B ,B ,B ,B ,B],
+          [B, B, B, B ,B ,B ,B ,B],
+          [B, B, B, B ,B ,B ,B ,B],
+          [B, B, B, B ,B ,B ,B ,B],
+          [WP,WP,WP,WP,WP,WP,WP,WP],
+          [WR,WH,WB,WQ,WK,WB,WH,WR], ];
   noLoop();
+  log=-1;
 }
 function draw() {
   background(220);
@@ -52,15 +53,23 @@ function draw() {
   const board6= [WP,WP,WP,WP,WP,WP,WP,WP]
   const board7 =[WR,WH,WB,WQ,WK,WB,WH,WR];*/
 
-  update(board0, board1, board2, board3, board4, board5, board6, board7, B);
+  update(board,B);
 }
-function mouseClicked() {
-  console.log("work");
-  let r = floor(8*(mouseX/width));
+function mouseClicked(){
+  log++;
+  console.log(log);
+  let c = floor(8*(mouseX/width));
   
-  let c = floor(8*(mouseY/width));
-  console.log(r,c);
-  board0[c]=B;
-  update(board0, board1, board2, board3, board4, board5, board6, board7, B);
+  let r = floor(8*(mouseY/width));
+  
+  if(log%2==0){
+  storedr=r;
+  storedc=c;
+  }
+  else{
+    click2(board, B,r,c,storedr,storedc)
+  }
+  update(board, B);
+  draw();
 
 }
